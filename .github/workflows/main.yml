@@ -1,0 +1,23 @@
+name: Compile C++ Program
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v5
+
+      - name: Compile C++
+        run: g++ main.cpp -o program -std=c++17
+
+      - name: Run Program
+        run: |
+          printf "Budi\nSMK Negeri 1\ntidak\n" | ./program
